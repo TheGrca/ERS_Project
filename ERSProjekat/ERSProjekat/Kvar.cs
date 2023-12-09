@@ -15,26 +15,27 @@ namespace ERSProjekat
         Zatvoreno
     }
 
-    internal class Kvar
+    internal class Kvar : ID_Kvara
     {
-        private int IDKvara { get; set;  }
-        private DateTime vremeKvara { get; set; }
-        private Status Status { get; set; }
-        private string Kratki_opis { get; set; }
-        private string Elektricni_element { get; set; } // Treba ubaciti klasu
-        private string Opis { get; set; }
+        private string IDKvara;
+        private DateTime vremeKvara;
+        private Status Status;
+        private string Kratki_opis;
+        private string Elektricni_element; // Treba ubaciti klasu
+        private string Opis;
         //private List<Akcija> Akcije { get; set; }
 
-        public Kvar(int id, DateTime datum, Status status, string kratkiOpis, string e_Element, string opis)
+        //Konstruktor
+        public Kvar(string kratkiOpis, string e_Element, string opis)
         {
-            IDKvara = id;
-            vremeKvara = datum;
-            Status = status;
             Kratki_opis = kratkiOpis;
             Elektricni_element = e_Element;
             Opis = opis;
-            // = new List<Action>();
+            IDKvara = ID();
+            //VREME
+            Status = Status.Nepotvrdjen;
         }
+
     }
 
 }
