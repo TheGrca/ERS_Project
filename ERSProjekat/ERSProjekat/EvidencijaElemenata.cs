@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ERSProjekat
 {
-    public enum Napon { srednji_napon,visoki_napon,nizak_napon}
-     public class EvidencijaElemenata
+    public enum Napon { srednji_napon, visoki_napon, nizak_napon }
+    public class EvidencijaElemenata
     {
         private int id_elementa;
         private string naziv_elementa;
@@ -21,7 +21,7 @@ namespace ERSProjekat
             naponski_nivo = Napon.srednji_napon;
         }
 
-        public EvidencijaElemenata(int id,string naziv,string tip,int geografska,Napon napon)
+        public EvidencijaElemenata(int id, string naziv, string tip, int geografska, Napon napon)
         {
             id_elementa = id;
             naziv_elementa = naziv;
