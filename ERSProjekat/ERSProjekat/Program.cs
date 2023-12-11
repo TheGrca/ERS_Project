@@ -14,7 +14,8 @@ namespace ERSProjekat
             string kratakOpis;
             string e_Element;
             string Opis;
-            string izvrsene_Akcije;
+            string izvrsene_Akcije; // Implementirati mapu
+            bool kvarovi = true;
             //El. Element
             
 
@@ -34,8 +35,17 @@ namespace ERSProjekat
                  e_Element = Console.ReadLine();
                  Console.WriteLine("Opis kvara: ");
                  Opis = Console.ReadLine();
-                 Console.WriteLine("Izvrsene akcije: ");
-                 izvrsene_Akcije = Console.ReadLine();
+                while (kvarovi)
+                {
+                    Console.WriteLine("Izvrsene akcije: ");
+                    izvrsene_Akcije = Console.ReadLine();
+                    Console.WriteLine("Da li zelite da upisete jos jednu akciju?: \n");
+                    Console.WriteLine("1 - Da\n");
+                    Console.WriteLine("2 - Ne\n");
+                    if (Console.ReadLine() == "2")
+                        kvarovi = false;
+                }
+                kvarovi = true;
                  Kvar k = new Kvar(kratakOpis, e_Element, Opis);
             }
             else if(opcija == "2")
@@ -44,7 +54,8 @@ namespace ERSProjekat
             }
             else if(opcija == "3")
             {
-
+                Console.WriteLine("Unesite vremenski opseg: ");
+                //Implementirati ispis
             }
             else
             {

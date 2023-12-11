@@ -36,7 +36,8 @@ namespace ERSProjekat
             Status = Status.Nepotvrdjen;
         }
 
-    }
+        // funkcija za upis kvara
 
+    }
 }
 
