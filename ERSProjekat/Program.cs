@@ -14,17 +14,12 @@ namespace ERSProjekat
             string kratakOpis;
             string e_Element;
             string Opis;
-            //DODATI AKCIJE
+            string izvrsene_Akcije; // Implementirati mapu
             bool kvarovi = true;
-
             //El. Element
-            int id_elementa;
-            string naziv_elementa;
-            string tip_elementa;
-            int geografska_lokacija;
+            
 
-
-        Console.WriteLine("----- OMS - Evidencija kvarova u elektricnoj mrezi -----\n\n\n");
+            Console.WriteLine("----- OMS - Evidencija kvarova u elektricnoj mrezi -----\n\n\n");
             Console.WriteLine("Izaberite opciju:\n");
             Console.WriteLine("1 - Unos podataka o kvaru\n");
             Console.WriteLine("2 - Evidencija elektricnih elemenata\n");
@@ -37,10 +32,10 @@ namespace ERSProjekat
                  Console.WriteLine("Kratak opis kvara: ");
                  kratakOpis = Console.ReadLine();
                  Console.WriteLine("Na kojem elektricnom elementu se desio kvar: ");
-                 e_Element = Console.ReadLine(); //Proveriti da li se element nalazi u listi elemenata
+                 e_Element = Console.ReadLine();
                  Console.WriteLine("Opis kvara: ");
                  Opis = Console.ReadLine();
-                /*while (kvarovi)
+                while (kvarovi)
                 {
                     Console.WriteLine("Izvrsene akcije: ");
                     izvrsene_Akcije = Console.ReadLine();
@@ -50,22 +45,17 @@ namespace ERSProjekat
                     if (Console.ReadLine() == "2")
                         kvarovi = false;
                 }
-                kvarovi = true;*/
-                 Kvar kvar = new Kvar(kratakOpis, e_Element, Opis);
+                kvarovi = true;
+                 Kvar k = new Kvar(kratakOpis, e_Element, Opis);
+                ElektricniElementi el = new ElektricniElementi();
+
+                Console.WriteLine("Unesite Elemente: ");
+               // el.upisiElement();
+
             }
             else if(opcija == "2")
             {
-                Console.WriteLine("----- Unesite Elektricni Element -----\n");
-                Console.WriteLine("ID Elektricnog Elementa: "); // Proveriti da li element sa id-jem postoji vec
-                id_elementa = int.Parse(Console.ReadLine()); //Proveriti da je broj
-                Console.WriteLine("Naziv Elektricnog Elementa: ");
-                naziv_elementa = Console.ReadLine();
-                Console.WriteLine("Tip elementa: ");
-                tip_elementa = Console.ReadLine();
-                Console.WriteLine("Geografska lokacija: ");
-                geografska_lokacija = int.Parse(Console.ReadLine());
 
-                EvidencijaElemenata el = new EvidencijaElemenata(id_elementa,naziv_elementa,tip_elementa,geografska_lokacija);
             }
             else if(opcija == "3")
             {

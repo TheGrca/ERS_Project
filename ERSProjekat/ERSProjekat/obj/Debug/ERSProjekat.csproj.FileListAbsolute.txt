@@ -1,5 +1,4 @@
 C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.csproj.AssemblyReference.cache
-C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.csproj.SuggestedBindingRedirects.cache
 C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.csproj.CoreCompileInputs.cache
 C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\ERSProjekat.exe.config
 C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\ERSProjekat.exe
