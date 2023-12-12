@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,25 +19,50 @@ namespace ERSProjekat
     internal class Kvar : ID_Kvara
     {
         private string IDKvara;
-        private DateTime vremeKvara;
+        private string vremeKvara;
         private Status Status;
         private string Kratki_opis;
-        private string Elektricni_element; // Treba ubaciti klasu
+        private string Elektricni_element;
         private string Opis;
-        //private List<Akcija> Akcije { get; set; }
+        //DODATI AKCIJE
 
-        //Konstruktor
+        
         public Kvar(string kratkiOpis, string e_Element, string opis)
         {
             Kratki_opis = kratkiOpis;
             Elektricni_element = e_Element;
             Opis = opis;
+            //DODATI AKCIJE
             IDKvara = ID();
-            //VREME
+            vremeKvara = GetTrenutnoVreme();
             Status = Status.Nepotvrdjen;
+            SacuvajInformacijeUFajl("informacije.txt");
         }
 
-        // funkcija za upis kvara
+
+
+        public void SacuvajInformacijeUFajl(string putanja)
+        {
+            string[] linije = {
+            $"Kratki opis: {Kratki_opis}",
+            $"Električni element: {Elektricni_element}",
+            $"Opis: {Opis}",
+            $"ID kvara: {IDKvara}",
+            $"Vreme kvara: {vremeKvara}",
+            $"Status: {Status}"
+        };
+            File.WriteAllLines(putanja, linije);
+        } //TEST FUNKCIJA, POSLE NAPRAVITI BAZU
+
+
+        public string GetTrenutnoVreme() //Funkcija koja dobavlja trenutno vreme
+        {
+            DateTime trenutnoVreme = DateTime.Now;
+
+            string dateString = trenutnoVreme.ToString("yyyy-MM-dd HH:mm:ss");
+
+            return dateString;
+        }
 
     }
 }

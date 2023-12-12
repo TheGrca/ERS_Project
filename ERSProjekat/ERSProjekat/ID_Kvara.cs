@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ERSProjekat
 {
-    public class ID_Kvara
+    class ID_Kvara
     {
 
         public static string ID()
