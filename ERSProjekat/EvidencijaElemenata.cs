@@ -19,12 +19,10 @@ namespace ERSProjekat
         public EvidencijaElemenata()
         {
             id_elementa = 0;
-            naziv_elementa= "";
+            naziv_elementa = "";
             tip_elementa = "";
             geografska_lokacija = 0;
             naponski_nivo = Napon.srednji_napon;
-
-
         }
 
         public EvidencijaElemenata(int id, string naziv, string tip, int geografska, Napon napon)
@@ -35,11 +33,10 @@ namespace ERSProjekat
             geografska_lokacija = geografska;
             naponski_nivo = napon;
         }
-
         public int IdElementa
         {
-            get { return id_elementa; }   
-            set { id_elementa = value; }  
+            get { return id_elementa; }
+            set { id_elementa = value; }
         }
 
         public string NazivElementa
@@ -59,6 +56,5 @@ namespace ERSProjekat
             get { return geografska_lokacija; }
             set { geografska_lokacija = value; }
         }
-
     }
 }

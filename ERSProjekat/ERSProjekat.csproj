@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ElektricniElementi.cs" />
     <Compile Include="EvidencijaElemenata.cs" />
     <Compile Include="ID_Kvara.cs" />
     <Compile Include="Kvar.cs" />
