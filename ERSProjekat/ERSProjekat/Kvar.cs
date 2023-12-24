@@ -24,7 +24,7 @@ namespace ERSProjekat
         private string Kratki_opis;
         private string Elektricni_element;
         private string Opis;
-        //DODATI AKCIJE
+        public List<Akcija> Akcije = new List<Akcija>();
 
         
         public Kvar(string kratkiOpis, string e_Element, string opis)
@@ -32,7 +32,6 @@ namespace ERSProjekat
             Kratki_opis = kratkiOpis;
             Elektricni_element = e_Element;
             Opis = opis;
-            //DODATI AKCIJE
             IDKvara = ID();
             vremeKvara = GetTrenutnoVreme();
             Status = Status.Nepotvrdjen;
@@ -49,13 +48,14 @@ namespace ERSProjekat
             $"Opis: {Opis}",
             $"ID kvara: {IDKvara}",
             $"Vreme kvara: {vremeKvara}",
-            $"Status: {Status}"
+            $"Status: {Status}",
+            $"Akcije: {Akcije}"
         };
             File.WriteAllLines(putanja, linije);
         } //TEST FUNKCIJA, POSLE NAPRAVITI BAZU
 
 
-        public string GetTrenutnoVreme() //Funkcija koja dobavlja trenutno vreme
+        public static string GetTrenutnoVreme() //Funkcija koja dobavlja trenutno vreme
         {
             DateTime trenutnoVreme = DateTime.Now;
 

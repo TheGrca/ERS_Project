@@ -1,0 +1,7 @@
+Kratki opis: kakak
+Električni element: jsa
+Opis: zxc
+ID kvara: 20231224060232_01
+Vreme kvara: 2023-12-24 18:02:32
+Status: Nepotvrdjen
+Akcije: System.Collections.Generic.List`1[ERSProjekat.Akcija]

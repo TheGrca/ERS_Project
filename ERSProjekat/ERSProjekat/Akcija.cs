@@ -8,8 +8,14 @@ namespace ERSProjekat
 {
     class Akcija
     {
-        public DateTime VremeAkcije { get; set; }
+        public string VremeAkcije { get; set; }
         public string Opis { get; set; }
+
+        public Akcija(string vreme, string opis)
+        {
+            this.VremeAkcije = vreme;
+            this.Opis = opis;
+        }
 
     }
 }

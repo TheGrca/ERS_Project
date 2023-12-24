@@ -16,6 +16,7 @@ namespace ERSProjekat
             string Opis;
             //DODATI AKCIJE
             bool kvarovi = true;
+            List<Kvar> Kvarovi = new List<Kvar>();
 
             //El. Element
             int id_elementa;
@@ -40,18 +41,22 @@ namespace ERSProjekat
                  e_Element = Console.ReadLine(); //Proveriti da li se element nalazi u listi elemenata
                  Console.WriteLine("Opis kvara: ");
                  Opis = Console.ReadLine();
-                /*while (kvarovi)
+                Console.WriteLine("Izvrsene akcije: ");
+                Kvar kvar = new Kvar(kratakOpis, e_Element, Opis);
+                while (kvarovi)
                 {
-                    Console.WriteLine("Izvrsene akcije: ");
-                    izvrsene_Akcije = Console.ReadLine();
+                    Console.WriteLine("Unesite akciju: ");
+                    string izvrsene_Akcije = Console.ReadLine();
+                    Akcija akcija = new Akcija(Kvar.GetTrenutnoVreme(), izvrsene_Akcije);
+                    kvar.Akcije.Add(akcija);
                     Console.WriteLine("Da li zelite da upisete jos jednu akciju?: \n");
                     Console.WriteLine("1 - Da\n");
                     Console.WriteLine("2 - Ne\n");
                     if (Console.ReadLine() == "2")
                         kvarovi = false;
                 }
-                kvarovi = true;*/
-                 Kvar kvar = new Kvar(kratakOpis, e_Element, Opis);
+                kvarovi = true;
+                Kvarovi.Add(kvar);
             }
             else if(opcija == "2")
             {
