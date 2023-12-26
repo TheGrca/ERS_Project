@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace ERSProjekat
 {
-    [Serializable]
+
     public enum Status
     {
         Nepotvrdjen,
@@ -17,22 +17,15 @@ namespace ERSProjekat
         Zatvoreno
     }
 
-    public class Kvar
+    public class Kvar : ID_Kvara
     {
-        [XmlElement("ID_Kvara")]
-        public string IDKvara { get; set; }
-        [XmlElement("Vreme_Kvara")]
-        public string vremeKvara { get; set; }
-        [XmlElement("Status_Kvara")]
-        public Status Status { get; set; }
-        [XmlElement("Kratki_Opis_Kvara")]
-        public string Kratki_opis { get; set; }
-        [XmlElement("EL_Element_Kvara")]
-        public string Elektricni_element { get; set; }
-        [XmlElement("Opis_Kvara")]
-        public string Opis { get; set; }
-        [XmlElement("Akcija_Kvara")]
-        public List<Akcija> Akcije { get; set; } = new List<Akcija>();
+        private string IDKvara;
+        private string vremeKvara;
+        private Status Status;
+        private string Kratki_opis;
+        private string Elektricni_element;
+        private string Opis;
+        public List<Akcija> Akcije = new List<Akcija>();
 
         
         public Kvar(string kratkiOpis, string e_Element, string opis)
@@ -40,25 +33,13 @@ namespace ERSProjekat
             Kratki_opis = kratkiOpis;
             Elektricni_element = e_Element;
             Opis = opis;
-            IDKvara = ID_Kvara.ID();
+            IDKvara = ID();
             vremeKvara = GetTrenutnoVreme();
             Status = Status.Nepotvrdjen;
-            List<Akcija> akcije = new List<Akcija>();
+            SacuvajInformacijeUFajl("informacije.txt");
         }
 
-        public Kvar()
-        {
 
-        }
-        public override string ToString()
-        {
-            return $"IDKvara: {IDKvara}, " +
-                   $"VremeKvara: {vremeKvara}, " +
-                   $"Status: {Status}, " +
-                   $"Kratki_opis: {Kratki_opis}, " +
-                   $"Elektricni_element: {Elektricni_element}, " +
-                   $"Opis: {Opis}, ";
-        }
 
         public void SacuvajInformacijeUFajl(string putanja)
         {
@@ -76,6 +57,12 @@ namespace ERSProjekat
             
         } //TEST FUNKCIJA, POSLE NAPRAVITI BAZU
           
+        
+        
+
+
+
+
         public static string GetTrenutnoVreme() //Funkcija koja dobavlja trenutno vreme
         {
             DateTime trenutnoVreme = DateTime.Now;
