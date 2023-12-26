@@ -11,24 +11,36 @@ namespace ERSProjekat
 {
     public class Database 
     {
-        public  void SacuvajKvarUFajl(Kvar kvar,string putanja)
+        public static void SacuvajKvarUFajl(Kvar kvar,string putanja)
         {
             try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Kvar));
-                using(TextWriter writer=new StreamWriter(putanja))
+                List<Kvar> errorList;
+                if (File.Exists(putanja))
                 {
-                    serializer.Serialize(writer, kvar);
+                    XmlSerializer Serializer = new XmlSerializer(typeof(List<Kvar>));
+                    using (TextReader reader = new StreamReader(putanja))
+                    {
+                        errorList = (List<Kvar>)Serializer.Deserialize(reader);
+                    }
                 }
-                Console.WriteLine("Kvar je uspesno sacuvan");
+                else
+                {
+                    errorList = new List<Kvar>();
+                }
+                errorList.Add(kvar);
+
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Kvar>));
+                using (StreamWriter writer = new StreamWriter(putanja))
+                {
+                    serializer.Serialize(writer, errorList);
+                }
+                Console.WriteLine("Kvar je registrovan.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine($"Greska prilikom cuvanja",ex.Message);
+                Console.WriteLine($"Greska prilikom registrovanja kvara: {ex.Message}");
             }
         }
-
-        
-
     }
 }

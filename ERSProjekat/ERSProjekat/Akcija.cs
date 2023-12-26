@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ERSProjekat
 {
-   public class Akcija
+    [Serializable]
+    public class Akcija
     {
         public string VremeAkcije { get; set; }
         public string Opis { get; set; }
@@ -15,6 +16,15 @@ namespace ERSProjekat
         {
             this.VremeAkcije = vreme;
             this.Opis = opis;
+        }
+
+        public Akcija()
+        { 
+        }
+
+        public override string ToString()
+        {
+            return $"VremeAkcije: {VremeAkcije}, OpisAkcije: {Opis}";
         }
 
     }
