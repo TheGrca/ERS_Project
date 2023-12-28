@@ -15,25 +15,25 @@ namespace ERSProjekat
         {
             try
             {
-                List<Kvar> errorList;
+                List<Kvar> ListaKvarova;
                 if (File.Exists(putanja))
                 {
                     XmlSerializer Serializer = new XmlSerializer(typeof(List<Kvar>));
                     using (TextReader reader = new StreamReader(putanja))
                     {
-                        errorList = (List<Kvar>)Serializer.Deserialize(reader);
+                        ListaKvarova = (List<Kvar>)Serializer.Deserialize(reader);
                     }
                 }
                 else
                 {
-                    errorList = new List<Kvar>();
+                    ListaKvarova = new List<Kvar>();
                 }
-                errorList.Add(kvar);
+                ListaKvarova.Add(kvar);
 
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Kvar>));
                 using (StreamWriter writer = new StreamWriter(putanja))
                 {
-                    serializer.Serialize(writer, errorList);
+                    serializer.Serialize(writer, ListaKvarova);
                 }
                 Console.WriteLine("Kvar je registrovan.");
             }

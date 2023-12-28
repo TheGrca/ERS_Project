@@ -30,10 +30,10 @@ namespace ERSProjekat
             do
             {
             Console.WriteLine("Izaberite opciju:\n");
-            Console.WriteLine("1 - Unos podataka o kvaru\n");
-            Console.WriteLine("2 - Evidencija elektricnih elemenata\n");
-            Console.WriteLine("3 - Lista kvarova\n");
-            Console.WriteLine("x - Izlazak iz aplikacije");
+            Console.WriteLine("\t\t1 - Unos podataka o kvaru\n");
+            Console.WriteLine("\t\t2 - Evidencija elektricnih elemenata\n");
+            Console.WriteLine("\t\t3 - Lista kvarova\n");
+            Console.WriteLine("\t\tx - Izlazak iz aplikacije");
             opcija = Console.ReadLine();
                 if (opcija == "1")
                 {
@@ -60,9 +60,17 @@ namespace ERSProjekat
                     }
                     kvarovi = true;
                     Kvarovi.Add(kvar);
-
-                    string putanja = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "test.xml");
+                    string putanja = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Kvar_DATABASE.xml");
                     Database.SacuvajKvarUFajl(kvar, putanja);
+
+                    Console.WriteLine("Da li zelite da kvar koji ste trenutno uneli ubacite u Excel fajl?");
+                    Console.WriteLine("1 - Da");
+                    Console.WriteLine("Bilo koji drugi taster - Ne");
+                    if (Console.ReadLine() == "1")
+                    {
+                        PodaciZaKvar pk = new PodaciZaKvar(kvar.IDKvara, kvar.Elektricni_element, "Srednji Napon", kvar.Akcije);
+                        pk.sacuvajUExcelKvar(pk);
+                    }
                 }
                 else if (opcija == "2")
                 {
@@ -82,12 +90,18 @@ namespace ERSProjekat
                 }
                 else if (opcija == "3")
                 {
-                    Console.WriteLine("Unesite vremenski opseg: ");
+                    string pocetak, kraj;
+                    Console.WriteLine("Unesite vremenski opseg u formatu 'yyyy-MM-dd'");
+                    Console.WriteLine("Pocetni opseg: ");
+                    pocetak = Console.ReadLine();
+                    Console.WriteLine("Krajnji opseg: ");
+                    kraj = Console.ReadLine();
+
                     //Implementirati ispis
                 }
                 else
                 {
-                    Console.WriteLine("Ponovite Unos.");
+                    Console.WriteLine("Greska prilikom unosa! Ponovite Unos.");
                 }
             } while (opcija != "x");
             

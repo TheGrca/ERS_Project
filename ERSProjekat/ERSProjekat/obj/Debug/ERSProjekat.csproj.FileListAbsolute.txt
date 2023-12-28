@@ -12,3 +12,11 @@ C:\Users\PC\Downloads\ERS_Project-dev\ERSProjekat\ERSProjekat\obj\Debug\ERSProje
 C:\Users\PC\Downloads\ERS_Project-dev\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.csproj.CoreCompileInputs.cache
 C:\Users\PC\Downloads\ERS_Project-dev\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.exe
 C:\Users\PC\Downloads\ERS_Project-dev\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.pdb
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\EPPlus.dll
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\EPPlus.xml
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.csproj.CopyComplete

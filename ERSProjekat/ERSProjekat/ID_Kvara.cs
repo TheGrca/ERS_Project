@@ -8,8 +8,8 @@ namespace ERSProjekat
 {
     public class ID_Kvara
     {
-
-        public static string ID()
+        private static Dictionary<DateTime, int> counters = new Dictionary<DateTime, int>();
+        public static string GetIDKvara()
         {
             DateTime currentDate = DateTime.Now; // Trenutni datum
             string formattedDate = currentDate.ToString("yyyyMMddhhmmss"); // Formatiraj kao "yyyyMMddhhmmss"
@@ -24,7 +24,6 @@ namespace ERSProjekat
 
         static int GetCounterForDate(DateTime date)
         {
-            Dictionary<DateTime, int> counters = new Dictionary<DateTime, int>();
 
             if (counters.TryGetValue(date.Date, out int counter))
             {
@@ -39,8 +38,17 @@ namespace ERSProjekat
 
         static void UpdateCounterForDate(DateTime date, int newCounter)
         {
-            Dictionary<DateTime, int> counters = new Dictionary<DateTime, int>();
-            counters[date.Date] = newCounter;
+            // Check if it's a new day
+            if (counters.ContainsKey(date.Date))
+            {
+                counters[date.Date] = newCounter;
+            }
+            else
+            {
+                // Reset counter for a new day
+                counters.Clear();
+                counters[date.Date] = 1;
+            }
         }
     }
 }
