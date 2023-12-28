@@ -45,8 +45,8 @@
   <ItemGroup>
     <Compile Include="Akcija.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="ElektricniElementi.cs" />
     <Compile Include="EvidencijaElemenata.cs" />
+    <Compile Include="ExcelPodaci.cs" />
     <Compile Include="ID_Kvara.cs" />
     <Compile Include="Kvar.cs" />
     <Compile Include="Program.cs" />

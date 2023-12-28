@@ -85,6 +85,10 @@ namespace ERSProjekat
                     Console.WriteLine("Unesite vremenski opseg: ");
                     //Implementirati ispis
                 }
+                else
+                {
+                    Console.WriteLine("Ponovite Unos.");
+                }
             } while (opcija != "x");
             
         }
