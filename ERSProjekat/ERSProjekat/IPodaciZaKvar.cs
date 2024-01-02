@@ -10,6 +10,6 @@ namespace ERSProjekat
     {
         void sacuvajUExcelKvar(PodaciZaKvar KvarZaExcel);
 
-        //ovde mozemo implementirati upise za druge formate
+        //Ovde mozemo implementirati upise za druge formate
     }
 }

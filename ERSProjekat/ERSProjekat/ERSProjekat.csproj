@@ -53,6 +53,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Xml.Linq" />
@@ -65,13 +66,17 @@
   <ItemGroup>
     <Compile Include="Akcija.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="EvidencijaElemenata.cs" />
+    <Compile Include="ElektricniElement.cs" />
+    <Compile Include="NadjiKvarPrekoDatuma.cs" />
     <Compile Include="IPodaciZaKvar.cs" />
+    <Compile Include="NadjiTrenutnoVreme.cs" />
     <Compile Include="PodaciZaKvar.cs" />
     <Compile Include="ID_Kvara.cs" />
     <Compile Include="Kvar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SacuvajElektricniElement.cs" />
+    <Compile Include="UIClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

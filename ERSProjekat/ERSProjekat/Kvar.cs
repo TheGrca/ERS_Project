@@ -41,7 +41,7 @@ namespace ERSProjekat
             Elektricni_element = e_Element;
             Opis = opis;
             IDKvara = ID_Kvara.GetIDKvara();
-            vremeKvara = GetTrenutnoVreme();
+            vremeKvara = NadjiTrenutnoVreme.GetTrenutnoVreme();
             Status = Status.Nepotvrdjen;
             List<Akcija> akcije = new List<Akcija>();
         }
@@ -58,15 +58,6 @@ namespace ERSProjekat
                    $"Kratki_opis: {Kratki_opis}, " +
                    $"Elektricni_element: {Elektricni_element}, " +
                    $"Opis: {Opis}, ";
-        }
-        
-        public static string GetTrenutnoVreme()
-        {
-            DateTime trenutnoVreme = DateTime.Now;
-
-            string dateString = trenutnoVreme.ToString("yyyy-MM-dd HH:mm:ss");
-
-            return dateString;
         }
 
     }

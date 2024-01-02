@@ -1,7 +1,0 @@
-Kratki opis: masina pokvarena nesto lupa
-Električni element: masina za sudove
-Opis: bubanj
-ID kvara: 20231224065352_01
-Vreme kvara: 2023-12-24 18:53:52
-Status: Nepotvrdjen
-Akcije: System.Collections.Generic.List`1[ERSProjekat.Akcija]

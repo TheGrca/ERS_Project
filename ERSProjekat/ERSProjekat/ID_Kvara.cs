@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,47 +9,90 @@ namespace ERSProjekat
 {
     public class ID_Kvara
     {
-        private static Dictionary<DateTime, int> counters = new Dictionary<DateTime, int>();
+        private static Dictionary<DateTime, int> brojaci = new Dictionary<DateTime, int>();
+        private static readonly string brojacKvaraFilePath = "brojacKvara.txt"; // Cuvamo podatak o brojacu u fajlu
+
         public static string GetIDKvara()
         {
-            DateTime currentDate = DateTime.Now; // Trenutni datum
-            string formattedDate = currentDate.ToString("yyyyMMddhhmmss"); // Formatiraj kao "yyyyMMddhhmmss"
+            DateTime trenutniDatum = DateTime.Now; // Trenutni datum
+            string formattedDate = trenutniDatum.ToString("yyyyMMddhhmmss"); // Formatiraj kao "yyyyMMddhhmmss"
 
             //Brojac kvara
-            int counter = GetCounterForDate(currentDate);
-            formattedDate += "_" + counter.ToString("D2"); 
-            UpdateCounterForDate(currentDate, counter + 1);
+            int counter = GetBrojacDana(trenutniDatum);
+            formattedDate += "_" + counter.ToString("D2");
+            UpdateBrojacKvara(trenutniDatum, counter + 1);
 
             return formattedDate;
         }
 
-        static int GetCounterForDate(DateTime date)
+        static int GetBrojacDana(DateTime datum)
         {
-
-            if (counters.TryGetValue(date.Date, out int counter))
+            if (brojaci.TryGetValue(datum.Date, out int brojac))
             {
-                return counter;
+                return brojac;
             }
             else
             {
-                counters[date.Date] = 1; 
-                return 1;
+                brojaci[datum.Date] = BrojacIzFajla() ?? 1; 
+                return brojaci[datum.Date];
             }
         }
 
-        static void UpdateCounterForDate(DateTime date, int newCounter)
+        static void UpdateBrojacKvara(DateTime date, int noviBrojac)
         {
-            // Check if it's a new day
-            if (counters.ContainsKey(date.Date))
+            // Da li je novi dan?
+            if (brojaci.ContainsKey(date.Date))
             {
-                counters[date.Date] = newCounter;
+                brojaci[date.Date] = noviBrojac;
             }
             else
             {
-                // Reset counter for a new day
-                counters.Clear();
-                counters[date.Date] = 1;
+                // Resetuj brojac za novi dan
+                brojaci.Clear();
+                brojaci[date.Date] = noviBrojac;
             }
+
+            ZapamtiBrojac(noviBrojac);
+        }
+
+        static int? BrojacIzFajla()
+        {
+            try
+            {
+                if (File.Exists(brojacKvaraFilePath))
+                {
+                    string counterString = File.ReadAllText(brojacKvaraFilePath);
+                    if (int.TryParse(counterString, out int counter))
+                    {
+                        return counter;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return null;
+        }
+
+        static void ZapamtiBrojac(int brojac)
+        {
+            try
+            {
+                File.WriteAllText(brojacKvaraFilePath, brojac.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        // Optional: Method to reset counters (for testing, etc.)
+        public static void ResetCounters()
+        {
+            brojaci.Clear();
+            ZapamtiBrojac(1);
         }
     }
 }

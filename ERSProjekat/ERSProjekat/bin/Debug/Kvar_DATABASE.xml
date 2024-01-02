@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKvar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Kvar>
+    <ID_Kvara>20240102090840_01</ID_Kvara>
+    <Vreme_Kvara>2024-01-02 21:08:40</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>aklsdk</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>frizider</EL_Element_Kvara>
+    <Opis_Kvara>kamm</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-02 21:08:42</VremeAkcije>
+      <Opis>123</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240102094128_01</ID_Kvara>
+    <Vreme_Kvara>2024-01-02 21:41:28</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>jajaja</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>123</EL_Element_Kvara>
+    <Opis_Kvara>32</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-02 21:41:31</VremeAkcije>
+      <Opis>mzkxc</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240102094433_01</ID_Kvara>
+    <Vreme_Kvara>2024-01-02 21:44:33</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>zxc</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>sda</EL_Element_Kvara>
+    <Opis_Kvara>qwe</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-02 21:44:35</VremeAkcije>
+      <Opis>fff</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240102094511_01</ID_Kvara>
+    <Vreme_Kvara>2024-01-02 21:45:11</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>znjxk</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>asidj</EL_Element_Kvara>
+    <Opis_Kvara>2</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-02 21:45:12</VremeAkcije>
+      <Opis>2</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240102094522_02</ID_Kvara>
+    <Vreme_Kvara>2024-01-02 21:45:22</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>zkmxlc</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>asl</EL_Element_Kvara>
+    <Opis_Kvara>zijxoc</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-02 21:45:23</VremeAkcije>
+      <Opis>ijsa</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240102103902_01</ID_Kvara>
+    <Vreme_Kvara>2024-01-02 22:39:02</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>ajsdk</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>zc</EL_Element_Kvara>
+    <Opis_Kvara>asd</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-02 22:39:03</VremeAkcije>
+      <Opis>slak</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240102103915_02</ID_Kvara>
+    <Vreme_Kvara>2024-01-02 22:39:15</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>zxc</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>b</EL_Element_Kvara>
+    <Opis_Kvara>g</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-02 22:39:16</VremeAkcije>
+      <Opis>r</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240102103947_03</ID_Kvara>
+    <Vreme_Kvara>2024-01-02 22:39:47</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>jaksld</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>zxncj</EL_Element_Kvara>
+    <Opis_Kvara>qpoiew</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-02 22:39:48</VremeAkcije>
+      <Opis>123</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+</ArrayOfKvar>
