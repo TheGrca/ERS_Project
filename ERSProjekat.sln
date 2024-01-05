@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33328.57
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERSProjekat", "ERSProjekat\ERSProjekat.csproj", "{BA4CC307-5380-43CA-A542-A8AFEB9F7C34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA4CC307-5380-43CA-A542-A8AFEB9F7C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4CC307-5380-43CA-A542-A8AFEB9F7C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA4CC307-5380-43CA-A542-A8AFEB9F7C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA4CC307-5380-43CA-A542-A8AFEB9F7C34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AD099B9-F65F-4890-893B-F41A681F041F}
+	EndGlobalSection
+EndGlobal
