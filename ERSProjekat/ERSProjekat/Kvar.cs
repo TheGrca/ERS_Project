@@ -33,6 +33,7 @@ namespace ERSProjekat
         public string Opis { get; set; }
         [XmlElement("Akcija_Kvara")]
         public List<Akcija> Akcije { get; set; } = new List<Akcija>();
+        [XmlElement("Datum_Kvara")]
         public DateTime DatumRegistrovanja { get; set; }
 
         
@@ -51,25 +52,13 @@ namespace ERSProjekat
         {
 
         }
-        static double IzracunajPrioritet(Kvar kvar)
+
+        public Kvar(string kratkiOpis, string e_Element, string opis, Status s) //Konstruktor za azuriranje kvara
         {
-            int brojDana = (DateTime.Now - kvar.DatumRegistrovanja).Days;
-            double prioritet = brojDana;
-            if (kvar.Status == Status.U_popravci)
-            {
-                prioritet = prioritet + brojDana;
-            }
-            if(kvar.Akcije != null)
-            {
-                foreach(var akcija in kvar.Akcije)
-                {
-                    if(akcija.DatumAkcije >= kvar.DatumRegistrovanja)
-                    {
-                        prioritet = prioritet + 0.5;
-                    }
-                }
-            }
-            return prioritet;
+            Kratki_opis = kratkiOpis;
+            Elektricni_element = e_Element;
+            Opis = opis;
+            Status = s;
         }
 
 

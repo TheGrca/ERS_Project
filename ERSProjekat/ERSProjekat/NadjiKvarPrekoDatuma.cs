@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,37 +11,46 @@ namespace ERSProjekat
 {
     class NadjiKvarPrekoDatuma
     {
-        public static void IspisiKvarPrekoDatuma(string pocetak, string kraj)
+        public static List<Kvar> IspisiKvarPrekoDatuma(string pocetak, string kraj)
         {
+            List<Kvar> listaKvarova = new List<Kvar>();
             string putanja = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Kvar_DATABASE.xml");
             try
             {
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(putanja);
-
-                XmlNodeList kvarLista = xmlDoc.SelectNodes($"/Root/ArrayOfKvar/Kvar[starts-with(Vreme_Kvara, '{pocetak}') and starts-with(Vreme_Kvara, '{kraj}')]");
-                if (kvarLista.Count > 0)
+                XmlNodeList kvarLista = xmlDoc.SelectNodes($"/Root/ArrayOfKvar/Kvar");
+                
+                if (kvarLista != null)
                 {
-                    Console.WriteLine("Kvarovi izmedju {0} i {1}:", pocetak, kraj);
-
                     foreach (XmlNode kvarNode in kvarLista)
                     {
-                        string vremeKvara = kvarNode.SelectSingleNode("Vreme_Kvara").InnerText;
-                        string kratkiOpisKvara = kvarNode.SelectSingleNode("Kratki_Opis_Kvara").InnerText;
-                        string statusKvara = kvarNode.SelectSingleNode("Status_Kvara").InnerText;
+                        DateTime vremeKvara = DateTime.ParseExact(kvarNode.SelectSingleNode("Vreme_Kvara").InnerText, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                        DateTime pocetniDatum = DateTime.ParseExact(pocetak, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                        DateTime krajnjiDatum = DateTime.ParseExact(kraj, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                        Kvar kvar = new Kvar();
+                        if (vremeKvara >= pocetniDatum && vremeKvara <= krajnjiDatum)
+                        {
+                            kvar.IDKvara = kvarNode.SelectSingleNode("ID_Kvara").InnerText;
+                            kvar.vremeKvara = vremeKvara.ToString("yyyy-MM-dd HH:mm:ss");
+                            kvar.Kratki_opis = kvarNode.SelectSingleNode("Kratki_Opis_Kvara").InnerText;
+                            kvar.Status = (Status)Enum.Parse(typeof(Status), kvarNode.SelectSingleNode("Status_Kvara").InnerText);
+                            kvar.Elektricni_element = kvarNode.SelectSingleNode("EL_Element_Kvara").InnerText;
+                            kvar.Opis = kvarNode.SelectSingleNode("Opis_Kvara").InnerText;
+                            kvar.DatumRegistrovanja = DateTime.Parse(kvarNode.SelectSingleNode("Datum_Kvara").InnerText);
 
-                        Console.WriteLine("Datum: {0}, Kratki Opis: {1}, Status: {2}", vremeKvara, kratkiOpisKvara, statusKvara);
+                            listaKvarova.Add(kvar);
+                        }
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Nema kvarova izmedju {0} i {1}.", pocetak, kraj);
+                    return listaKvarova;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+
+            return null;
         }
     }
 }
