@@ -19,7 +19,7 @@ namespace ERSProjekat
         private string naziv_elementa;
         private string tip_elementa;
         private Point geografska_lokacija;
-        private Napon naponski_nivo;
+        public Napon naponski_nivo;
 
 
         public ElektricniElement()

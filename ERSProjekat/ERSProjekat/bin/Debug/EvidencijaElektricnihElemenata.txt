@@ -4,3 +4,21 @@ Tip elementa: hahah
 Geografska lokacija: {X=142,Y=9023}
 Naponski nivo: srednji_napon
 
+ID elementa: 1
+Naziv elementa: nazivel
+Tip elementa: tipel
+Geografska lokacija: {X=10,Y=20}
+Naponski nivo: srednji_napon
+
+ID elementa: 1
+Naziv elementa: nazivel
+Tip elementa: tipel
+Geografska lokacija: {X=10,Y=20}
+Naponski nivo: srednji_napon
+
+ID elementa: 1
+Naziv elementa: nazivel
+Tip elementa: tipel
+Geografska lokacija: {X=10,Y=20}
+Naponski nivo: srednji_napon
+

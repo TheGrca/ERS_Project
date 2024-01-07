@@ -19,7 +19,7 @@ namespace ERSProjekat
         {
             idKvara = id;
             nazivElementa = naziv;
-            naponskiNivo = napon;
+            naponskiNivo = napon.ToString();
             spisakAkcija = spisak;
         }
 

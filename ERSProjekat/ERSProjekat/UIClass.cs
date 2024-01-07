@@ -29,6 +29,18 @@ namespace ERSProjekat
             } while (kratakOpis.Length > 30);
             Console.WriteLine("Na kojem elektricnom elementu se desio kvar: ");
             e_Element = Console.ReadLine(); //Proveriti da li se element nalazi u listi elemenata
+            string putanjaTxt = "EvidencijaElektricnihElemenata.txt";
+
+            if (ProveriElement.ProverElementUTxt(e_Element, putanjaTxt))
+            {
+                Console.WriteLine($"Elektricni element {e_Element} se nalazi u fajlu");
+            }
+            else
+            {
+                Console.WriteLine($"Elektricni element {e_Element} se ne nalazi u fajlu");
+                Console.WriteLine("Unesite ponovo elektricni element:");
+                Console.ReadLine();
+            }
             Console.WriteLine("Opis kvara: ");
             Opis = Console.ReadLine();
             Console.WriteLine("Izvrsene akcije: ");
@@ -53,9 +65,15 @@ namespace ERSProjekat
             Console.WriteLine("Da li zelite da za kvar koji ste trenutno uneli kreirate poseban Excel fajl?");
             Console.WriteLine("1 - Da");
             Console.WriteLine("Bilo koji drugi taster - Ne");
+            
             if (Console.ReadLine() == "1")
             {
-                PodaciZaKvar pk = new PodaciZaKvar(kvar.IDKvara, kvar.Elektricni_element, "Srednji Napon", kvar.Akcije); //Umjesto srednji napon neka nadje napon od elektricnog elementa preko txt fajla
+               // ProcitajNapon naponCitanje = new ProcitajNapon("Kvar_DATABASE.html");
+                //naponCitanje.ProcitajNaponElementa();
+                //Console.ReadLine();
+                
+                
+                PodaciZaKvar pk = new PodaciZaKvar(kvar.IDKvara, kvar.Elektricni_element,"Srednji Napon", kvar.Akcije); //Umjesto srednji napon neka nadje napon od elektricnog elementa preko txt fajla
                 pk.sacuvajUExcelKvar(pk);
             }
         }
@@ -117,6 +135,7 @@ namespace ERSProjekat
             kvaroviZaDatum = NadjiKvarPrekoDatuma.IspisiKvarPrekoDatuma(pocetak, kraj); // Nije dobar ispis kvarova
             if (kvaroviZaDatum == null)
             {
+                
                 Console.WriteLine("Nema kvarova između {0} i {1}.", pocetak, kraj);
             }
             else
