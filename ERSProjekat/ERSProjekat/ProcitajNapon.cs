@@ -9,24 +9,21 @@ namespace ERSProjekat
 {
     class ProcitajNapon
     {
-        private string putanjaDoFajla;
-        
-        public ProcitajNapon(string putanja)
-        {
-            putanjaDoFajla = putanja;
-            }
-        public void ProcitajNaponElementa()
+        public string ProcitajNaponElementa(string putanjaDoFajla) //On procita prvi naponski nivo, neka nadje taj elektricni element pa procita njegov naponski nivo
         {
             try
             {
                 string[] linije = File.ReadAllLines(putanjaDoFajla);
 
-                foreach(string linija in linije)
+                foreach (string linija in linije)
                 {
-                    string[] podaci = linija.Split(',');
-                    if(decimal.TryParse(podaci[4],out decimal napon))
+                    string[] podaci = linija.Split('\n');
+                    foreach (string podatak in podaci)
                     {
-                        Console.WriteLine("Izvuceni napon" + napon);
+                        if (podatak.Trim().StartsWith("Naponski nivo:"))
+                        {
+                            return  podatak.Split(':')[1].Trim();
+                        }
                     }
                 }
             }
@@ -34,7 +31,7 @@ namespace ERSProjekat
             {
                 Console.WriteLine(ex.Message);
             }
+           return "Srednji napon";
         }
-
     }
 }

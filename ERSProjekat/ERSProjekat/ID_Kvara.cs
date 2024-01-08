@@ -87,12 +87,5 @@ namespace ERSProjekat
                 Console.WriteLine(e.Message);
             }
         }
-
-        // Optional: Method to reset counters (for testing, etc.)
-        public static void ResetCounters()
-        {
-            brojaci.Clear();
-            ZapamtiBrojac(1);
-        }
     }
 }

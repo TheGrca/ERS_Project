@@ -28,10 +28,10 @@ namespace ERSProjekat
                     Console.WriteLine("Nepravilno unesen kratki opis");
             } while (kratakOpis.Length > 30);
             Console.WriteLine("Na kojem elektricnom elementu se desio kvar: ");
-            e_Element = Console.ReadLine(); //Proveriti da li se element nalazi u listi elemenata
+            e_Element = Console.ReadLine(); 
             string putanjaTxt = "EvidencijaElektricnihElemenata.txt";
 
-            if (ProveriElement.ProverElementUTxt(e_Element, putanjaTxt))
+            if (ProveriElement.ProverElementUTxt(e_Element, putanjaTxt))   //OVDJE DO WHILE
             {
                 Console.WriteLine($"Elektricni element {e_Element} se nalazi u fajlu");
             }
@@ -68,11 +68,8 @@ namespace ERSProjekat
             
             if (Console.ReadLine() == "1")
             {
-               // ProcitajNapon naponCitanje = new ProcitajNapon("Kvar_DATABASE.html");
-                //naponCitanje.ProcitajNaponElementa();
-                //Console.ReadLine();
-                
-                
+                //Ovdje pozovi funkciju koja ce ti vratiti naponski nivo
+  
                 PodaciZaKvar pk = new PodaciZaKvar(kvar.IDKvara, kvar.Elektricni_element,"Srednji Napon", kvar.Akcije); //Umjesto srednji napon neka nadje napon od elektricnog elementa preko txt fajla
                 pk.sacuvajUExcelKvar(pk);
             }
@@ -96,7 +93,7 @@ namespace ERSProjekat
             Console.WriteLine("Unesite geografsku duzinu: ");
             int y = Int32.Parse(Console.ReadLine());
             Point geografska_lokacija = new Point(x, y);
-            Napon n;
+            Napon n = Napon.srednji_napon;
             Console.WriteLine("Da li znate napon elektricnog elementa? ");
             Console.WriteLine("1 - Da");
             Console.WriteLine("Bilo koji taster - Ne");
@@ -118,7 +115,7 @@ namespace ERSProjekat
                 }
 
             }
-            n = Napon.srednji_napon;
+
             ElektricniElement el = new ElektricniElement(id_elementa, naziv_elementa, tip_elementa, geografska_lokacija, n);
             Console.WriteLine("Uspesno ste uneli elektricni element");
         }
@@ -132,7 +129,7 @@ namespace ERSProjekat
             Console.WriteLine("Krajnji opseg: ");
             kraj = Console.ReadLine();
             List<Kvar> kvaroviZaDatum = new List<Kvar>();
-            kvaroviZaDatum = NadjiKvarPrekoDatuma.IspisiKvarPrekoDatuma(pocetak, kraj); // Nije dobar ispis kvarova
+            kvaroviZaDatum = NadjiKvarPrekoDatuma.IspisiKvarPrekoDatuma(pocetak, kraj); // Nije dobar ispis kvarova, ovo cu ja srediti
             if (kvaroviZaDatum == null)
             {
                 

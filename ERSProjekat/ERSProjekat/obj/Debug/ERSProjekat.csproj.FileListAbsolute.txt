@@ -35,3 +35,5 @@ C:\Users\Bogdan\Desktop\projekat\ERS_Project-dev\ERSProjekat\ERSProjekat\obj\Deb
 C:\Users\Bogdan\Desktop\projekat\ERS_Project-dev\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.csproj.CopyComplete
 C:\Users\Bogdan\Desktop\projekat\ERS_Project-dev\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.exe
 C:\Users\Bogdan\Desktop\projekat\ERS_Project-dev\ERSProjekat\ERSProjekat\obj\Debug\ERSProjekat.pdb
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\nunit.framework.dll
+C:\Users\Korisnik\Desktop\ERS Project\ERSProjekat\ERSProjekat\bin\Debug\nunit.framework.xml
