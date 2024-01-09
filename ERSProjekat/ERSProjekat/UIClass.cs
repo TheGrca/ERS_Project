@@ -30,17 +30,21 @@ namespace ERSProjekat
             Console.WriteLine("Na kojem elektricnom elementu se desio kvar: ");
             e_Element = Console.ReadLine(); 
             string putanjaTxt = "EvidencijaElektricnihElemenata.txt";
-
-            if (ProveriElement.ProverElementUTxt(e_Element, putanjaTxt))   //OVDJE DO WHILE
+            bool pronadjenElement = false;
+            do
             {
-                Console.WriteLine($"Elektricni element {e_Element} se nalazi u fajlu");
-            }
-            else
-            {
-                Console.WriteLine($"Elektricni element {e_Element} se ne nalazi u fajlu");
-                Console.WriteLine("Unesite ponovo elektricni element:");
-                Console.ReadLine();
-            }
+                if (ProveriElement.ProverElementUTxt(e_Element, putanjaTxt))   
+                {
+                    Console.WriteLine($"Elektricni element {e_Element} se nalazi u fajlu");
+                    pronadjenElement = true;
+                }
+                else
+                {
+                    Console.WriteLine($"Elektricni element {e_Element} se ne nalazi u fajlu");
+                    Console.WriteLine("Unesite ponovo elektricni element:");
+                    Console.ReadLine();
+                }
+            } while (!pronadjenElement);
             Console.WriteLine("Opis kvara: ");
             Opis = Console.ReadLine();
             Console.WriteLine("Izvrsene akcije: ");
@@ -59,7 +63,7 @@ namespace ERSProjekat
             }
             kvarovi = true;
             Kvarovi.Add(kvar);
-            string putanja = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Kvar_DATABASE.xml");
+            string putanja = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Kvar_DATABASE.xlsx");
             Database.SacuvajKvarUFajl(kvar, putanja);
 
             Console.WriteLine("Da li zelite da za kvar koji ste trenutno uneli kreirate poseban Excel fajl?");
@@ -69,8 +73,11 @@ namespace ERSProjekat
             if (Console.ReadLine() == "1")
             {
                 //Ovdje pozovi funkciju koja ce ti vratiti naponski nivo
+                ProcitajNapon procitajNapon = new ProcitajNapon();
+                string putanjaDoFajla = "EvidencijaElektricnihElemenata.txt";
+                string naponskiNivo = procitajNapon.ProcitajNaponElementa(putanjaDoFajla, e_Element);
   
-                PodaciZaKvar pk = new PodaciZaKvar(kvar.IDKvara, kvar.Elektricni_element,"Srednji Napon", kvar.Akcije); //Umjesto srednji napon neka nadje napon od elektricnog elementa preko txt fajla
+                PodaciZaKvar pk = new PodaciZaKvar(kvar.IDKvara, kvar.Elektricni_element,naponskiNivo, kvar.Akcije); //Umjesto srednji napon neka nadje napon od elektricnog elementa preko txt fajla
                 pk.sacuvajUExcelKvar(pk);
             }
         }
@@ -81,8 +88,42 @@ namespace ERSProjekat
             string naziv_elementa;
             string tip_elementa;
             Console.WriteLine("----- Unesite Elektricni Element -----\n");
-            Console.WriteLine("ID Elektricnog Elementa: "); // Proveriti da li element sa id-jem postoji vec
-            id_elementa = int.Parse(Console.ReadLine()); //Proveriti da je broj
+            Console.WriteLine("ID Elektricnog Elementa: ");
+            string putanjatxt = "EvidencijaElektricnihElemenata.txt";
+            bool pronadjenID = false;
+            // id_elementa = int.Parse(Console.ReadLine()); //Proveriti da je broj
+            do
+            {
+                if (int.TryParse(Console.ReadLine(), out id_elementa))
+                {
+                    Console.WriteLine($"Uneli ste broj: {id_elementa}");
+                    break;
+
+                }
+                else
+                {
+                    Console.WriteLine("Greska: Niste uneli broj");
+                }
+            } while (true);
+           
+            do
+            {
+                if (ProveraID.ProveriIDuTXT(id_elementa, putanjatxt))
+                {
+                    Console.WriteLine($"ID elementa {id_elementa} se nalazi u fajlu");
+                    pronadjenID = true;
+                }
+                else
+                {
+
+                    Console.WriteLine($"ID elementa {id_elementa} se ne nalazi u fajlu");
+                    Console.WriteLine("Unesite ponovo ID elementa:");
+
+                    id_elementa = int.Parse(Console.ReadLine());
+                }
+            } while (!pronadjenID);
+
+
             Console.WriteLine("Naziv Elektricnog Elementa: ");
             naziv_elementa = Console.ReadLine();
             Console.WriteLine("Tip elementa: ");
@@ -194,7 +235,23 @@ namespace ERSProjekat
                 Console.WriteLine("Nepravilno unesen kratki opis");
             } while (kratakOpis.Length > 30);
             Console.WriteLine("Na kojem elektricnom elementu se desio kvar: ");
-            e_Element = Console.ReadLine(); //Proveriti da li se element nalazi u listi elemenata
+            e_Element = Console.ReadLine(); 
+            string putanjaTxt = "EvidencijaElektricnihElemenata.txt";
+            bool pronadjenElement = false;
+            do
+            {
+                if (ProveriElement.ProverElementUTxt(e_Element, putanjaTxt))
+                {
+                    Console.WriteLine($"Elektricni element {e_Element} se nalazi u fajlu");
+                    pronadjenElement = true;
+                }
+                else
+                {
+                    Console.WriteLine($"Elektricni element {e_Element} se ne nalazi u fajlu");
+                    Console.WriteLine("Unesite ponovo elektricni element:");
+                    Console.ReadLine();
+                }
+            } while (!pronadjenElement);
             Console.WriteLine("Opis kvara: ");
             Opis = Console.ReadLine();
             Console.WriteLine("Unesite status(Nepotvrdjen, U_popravci, Testiranje, Zatvoreno): ");

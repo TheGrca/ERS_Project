@@ -31,7 +31,8 @@ namespace ERSProjekat
                 }
                 else if (opcija == "2")
                 {
-                    ui.UnesiElElement();
+                    
+                        ui.UnesiElElement();
                 }
                 else if (opcija == "3")
                 {

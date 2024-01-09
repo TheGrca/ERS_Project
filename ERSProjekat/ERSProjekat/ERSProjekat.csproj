@@ -84,6 +84,7 @@
     <Compile Include="ProcitajNapon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveraID.cs" />
     <Compile Include="ProveriElement.cs" />
     <Compile Include="SacuvajElektricniElement.cs" />
     <Compile Include="UIClass.cs" />
