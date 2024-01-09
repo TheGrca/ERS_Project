@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKvar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Kvar>
+    <ID_Kvara>20240109111730_01</ID_Kvara>
+    <Vreme_Kvara>2024-01-09 23:17:30</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>kvar namota</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>Generator</EL_Element_Kvara>
+    <Opis_Kvara>prekid struje</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-09 23:17:34</VremeAkcije>
+      <Opis>popravka namota</Opis>
+      <DatumAkcije>0001-01-01T00:00:00</DatumAkcije>
+    </Akcija_Kvara>
+    <Datum_Kvara>0001-01-01T00:00:00</Datum_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240109112407_02</ID_Kvara>
+    <Vreme_Kvara>2024-01-09 23:24:07</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>kvar lampe</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>lampa</EL_Element_Kvara>
+    <Opis_Kvara>prekid svetlosti</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-09 23:24:30</VremeAkcije>
+      <Opis>popravka lampe</Opis>
+      <DatumAkcije>0001-01-01T00:00:00</DatumAkcije>
+    </Akcija_Kvara>
+    <Datum_Kvara>0001-01-01T00:00:00</Datum_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240109114835_03</ID_Kvara>
+    <Vreme_Kvara>2024-01-09 23:48:35</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>prekid svetla</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>lampa</EL_Element_Kvara>
+    <Opis_Kvara>losi polovi </Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-09 23:48:41</VremeAkcije>
+      <Opis>popravka polova</Opis>
+      <DatumAkcije>0001-01-01T00:00:00</DatumAkcije>
+    </Akcija_Kvara>
+    <Datum_Kvara>0001-01-01T00:00:00</Datum_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240110120447_04</ID_Kvara>
+    <Vreme_Kvara>2024-01-10 00:04:47</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>lose svetlo</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>lampa</EL_Element_Kvara>
+    <Opis_Kvara>losa sijalica</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-10 00:04:52</VremeAkcije>
+      <Opis>popravka sijalice</Opis>
+      <DatumAkcije>0001-01-01T00:00:00</DatumAkcije>
+    </Akcija_Kvara>
+    <Datum_Kvara>0001-01-01T00:00:00</Datum_Kvara>
+  </Kvar>
+</ArrayOfKvar>

@@ -24,8 +24,9 @@ namespace ERSProjekat
                     {
                         string element = podaci[1].Trim();
                         string napon = podaci[4].Trim();
-                        if(element==e_Element && e_Element.StartsWith("Naponski nivo"))
+                        if(element==e_Element )
                         {
+
                             return napon;
                         }
                     }

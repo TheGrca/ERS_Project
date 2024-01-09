@@ -1,0 +1,39 @@
+Kratak opis kvara: prekid vodica
+Elektricni element:transformator
+Opis kvara: prekid vodica u primarnom ili sekundarnom namotaju
+
+
+Kratak opis kvara: kvar namota
+Elektricni element:elektro motor
+Opis kvara: kvar namota uzrokuje prekid motora
+
+
+Kratak opis kvara: gubitak magnetnog polja
+Elektricni element:generator
+Opis kvara: kvar na rotoru ili statoru koji utice na snagu
+
+
+Kratak opis kvara: losa provodljivost
+Elektricni element: prekidac
+Opis kvara: problem sa unutrasnjim kontaktnim povrsinama
+
+
+Kratak opis kvara: gubitak kapaciteta
+Elektricni element: baterija
+Opis kvara: ostecenje kucista ili kontakata
+
+
+
+
+Kratak opis kvara: prekid
+Elektricni element: zvono
+Opis kvara: ostecenje membrane zvucnika
+Izvrsene akcije:
+
+
+
+Kratak opis kvara: prekid svetlosti
+Elektricni element:lampa
+Opis kvara: kvar u elektricnom prikljucku
+Izvrsene akcije:
+
