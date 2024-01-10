@@ -33,7 +33,7 @@ namespace ERSProjekat
         public string Opis { get; set; }
         [XmlElement("Akcija_Kvara")]
         public List<Akcija> Akcije { get; set; } = new List<Akcija>();
-        [XmlElement("Datum_Kvara")]
+        [XmlIgnore]
         public DateTime DatumRegistrovanja { get; set; }
 
         
@@ -53,8 +53,10 @@ namespace ERSProjekat
 
         }
 
-        public Kvar(string kratkiOpis, string e_Element, string opis, Status s) //Konstruktor za azuriranje kvara
+        public Kvar(string id,string vremek ,string kratkiOpis, string e_Element, string opis, Status s) //Konstruktor za azuriranje kvara
         {
+            IDKvara = id;
+            vremeKvara = vremek;
             Kratki_opis = kratkiOpis;
             Elektricni_element = e_Element;
             Opis = opis;

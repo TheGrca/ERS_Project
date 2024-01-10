@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
 using System.Drawing;
-
+using System.Globalization;
 
 namespace ERSProjekat
 {
@@ -34,15 +34,12 @@ namespace ERSProjekat
             do
             {
                 if (ProveriElement.ProverElementUTxt(e_Element, putanjaTxt))   
-                {
-                    Console.WriteLine($"Elektricni element {e_Element} se nalazi u fajlu");
                     pronadjenElement = true;
-                }
                 else
                 {
-                    Console.WriteLine($"Elektricni element {e_Element} se ne nalazi u fajlu");
+                    Console.WriteLine($"Elektricni element {e_Element} se ne nalazi u bazi\n");
                     Console.WriteLine("Unesite ponovo elektricni element:");
-                    Console.ReadLine();
+                    e_Element = Console.ReadLine();
                 }
             } while (!pronadjenElement);
             Console.WriteLine("Opis kvara: ");
@@ -61,26 +58,22 @@ namespace ERSProjekat
                 if (Console.ReadLine() == "2")
                     kvarovi = false;
             }
-            kvarovi = true;
             Kvarovi.Add(kvar);
-            string putanja = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Kvar_DATABASE.xlsx");
+            string putanja = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Kvar_DATABASE.xml");
             Database.SacuvajKvarUFajl(kvar, putanja);
 
             Console.WriteLine("Da li zelite da za kvar koji ste trenutno uneli kreirate poseban Excel fajl?");
             Console.WriteLine("1 - Da");
-            Console.WriteLine("Bilo koji drugi taster - Ne");
-            
+            Console.WriteLine("Bilo koji drugi taster - Ne");   
             if (Console.ReadLine() == "1")
             {
-                //Ovdje pozovi funkciju koja ce ti vratiti naponski nivo
                 ProcitajNapon procitajNapon = new ProcitajNapon();
                 string putanjaDoFajla = "EvidencijaElektricnihElemenata.txt";
                 string naponskiNivo = procitajNapon.ProcitajNaponElementa(putanjaDoFajla, e_Element);
-  
-                PodaciZaKvar pk = new PodaciZaKvar(kvar.IDKvara, kvar.Elektricni_element,naponskiNivo, kvar.Akcije); //Umjesto srednji napon neka nadje napon od elektricnog elementa preko txt fajla
+                PodaciZaKvar pk = new PodaciZaKvar(kvar.IDKvara, kvar.Elektricni_element,naponskiNivo, kvar.Akcije);
                 pk.sacuvajUExcelKvar(pk);
             }
-        }
+        } 
 
         public void UnesiElElement()
         {
@@ -88,40 +81,30 @@ namespace ERSProjekat
             string naziv_elementa;
             string tip_elementa;
             Console.WriteLine("----- Unesite Elektricni Element -----\n");
-            Console.WriteLine("ID Elektricnog Elementa: ");
+            Console.WriteLine("ID Elektricnog Elementa (brojna vrednost): ");
             string putanjatxt = "EvidencijaElektricnihElemenata.txt";
             bool pronadjenID = false;
-            // id_elementa = int.Parse(Console.ReadLine()); //Proveriti da je broj
             do
             {
-                if (int.TryParse(Console.ReadLine(), out id_elementa))
+                if (int.TryParse(Console.ReadLine(), out id_elementa) == true)
                 {
-                    Console.WriteLine($"Uneli ste broj: {id_elementa}");
+                    do
+                    {
+                        if (ProveraID.ProveriIDuTXT(id_elementa, putanjatxt))
+                        {
+                            Console.WriteLine($"ID elementa {id_elementa} je vec postojeci. Unesite ponovo.");
+                            id_elementa = int.Parse(Console.ReadLine());
+                        }
+                        else
+                            pronadjenID = true;
+
+                    } while (!pronadjenID);
                     break;
-
                 }
                 else
-                {
-                    Console.WriteLine("Greska: Niste uneli broj");
-                }
+                    Console.WriteLine("Greska: Niste uneli broj. Unesite ponovo: ");
             } while (true);
-           
-            do
-            {
-                if (ProveraID.ProveriIDuTXT(id_elementa, putanjatxt))
-                {
-                    Console.WriteLine($"ID elementa {id_elementa} se nalazi u fajlu");
-                    pronadjenID = true;
-                }
-                else
-                {
-
-                    Console.WriteLine($"ID elementa {id_elementa} se ne nalazi u fajlu");
-                    Console.WriteLine("Unesite ponovo ID elementa:");
-
-                    id_elementa = int.Parse(Console.ReadLine());
-                }
-            } while (!pronadjenID);
+          
 
 
             Console.WriteLine("Naziv Elektricnog Elementa: ");
@@ -154,26 +137,26 @@ namespace ERSProjekat
                         n = Napon.nizak_napon;
                         break;
                 }
-
             }
-
             ElektricniElement el = new ElektricniElement(id_elementa, naziv_elementa, tip_elementa, geografska_lokacija, n);
             Console.WriteLine("Uspesno ste uneli elektricni element");
-        }
+        } 
 
         public void ListaKvarova()
         {
             string pocetak, kraj;
+            Console.WriteLine("----- Lista kvarova -----\n");
             Console.WriteLine("Unesite vremenski opseg u formatu 'yyyy-MM-dd'");
             Console.WriteLine("Pocetni opseg: ");
             pocetak = Console.ReadLine();
             Console.WriteLine("Krajnji opseg: ");
             kraj = Console.ReadLine();
             List<Kvar> kvaroviZaDatum = new List<Kvar>();
+            DateTime pocetniDatum = DateTime.ParseExact(pocetak + " 00:00:00", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            DateTime krajnjiDatum = DateTime.ParseExact(kraj + " 23:59:59", "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
             kvaroviZaDatum = NadjiKvarPrekoDatuma.IspisiKvarPrekoDatuma(pocetak, kraj); // Nije dobar ispis kvarova, ovo cu ja srediti
             if (kvaroviZaDatum == null)
-            {
-                
+            {      
                 Console.WriteLine("Nema kvarova između {0} i {1}.", pocetak, kraj);
             }
             else
@@ -181,34 +164,35 @@ namespace ERSProjekat
                 int brojac = 1;
                 foreach (Kvar k in kvaroviZaDatum)
                 {
-                    Console.WriteLine("{0}. {1}, {2}, {3}", brojac, k.DatumRegistrovanja, k.Kratki_opis, k.Status);
+                    Console.WriteLine("{0}. {1}, {2}, {3}", brojac, k.vremeKvara, k.Kratki_opis, k.Status);
                     brojac++;
                 }
                     Console.WriteLine("Da li zelite izabrati neki kvar?: ");
                     Console.WriteLine("Da - Unesite broj kvara"); 
                     Console.WriteLine("Ne - 0");
-                    int izabraniKvar = int.Parse(Console.ReadLine());
-                if (izabraniKvar != 0)
+                    int izabraniKvarBroj = int.Parse(Console.ReadLine());
+                if (izabraniKvarBroj != 0)
                 {
-                    if (izabraniKvar < brojac && izabraniKvar > 0)
+                    if (izabraniKvarBroj < brojac && izabraniKvarBroj > 0)
                     {
-                        if (kvaroviZaDatum[izabraniKvar - 1].Status == Status.U_popravci)
-                            Console.WriteLine("Izabrali ste kvar: {0}, a njegov prioritet je: {1}", kvaroviZaDatum[izabraniKvar - 1].ToString(), PrioritetZaKvar.IzracunajPrioritet(kvaroviZaDatum[izabraniKvar - 1]));
+                        Kvar izabraniKvar = kvaroviZaDatum[izabraniKvarBroj - 1];
+                        if (izabraniKvar.Status == Status.U_popravci)
+                            Console.WriteLine("Izabrali ste kvar: {0}a njegov prioritet je: {1}", izabraniKvar.ToString(), PrioritetZaKvar.IzracunajPrioritet(izabraniKvar));
                         else
-                            Console.WriteLine("Izabrali ste kvar: {0}", kvaroviZaDatum[izabraniKvar - 1].ToString());
+                            Console.WriteLine("Izabrali ste kvar: {0}", izabraniKvar.ToString());
 
                         Console.WriteLine("Da li zelite azurirati izabrani kvar?");
                         Console.WriteLine("Da - 1");
                         Console.WriteLine("Ne - Bilo koji drugi taster");
                         if (Console.ReadLine() == "1")
                         {
-                            if (kvaroviZaDatum[izabraniKvar - 1].Status == Status.Zatvoreno)
+                            if (izabraniKvar.Status == Status.Zatvoreno)
                             {
                                 Console.WriteLine("Izabrani kvar nije moguce azurirati zbog statusa!");
                             }
                             else
                             {
-                                AzuriranjeKvara.Azuriraj(kvaroviZaDatum[izabraniKvar - 1]);
+                                AzuriranjeKvaraUI(izabraniKvar.IDKvara, izabraniKvar.vremeKvara);
                             }
                         }
                     }
@@ -220,7 +204,7 @@ namespace ERSProjekat
             }
         }
 
-        public void AzuriranjeKvaraUI()
+        public void AzuriranjeKvaraUI(string idk, string vremek)
         {
             string kratakOpis;
             string e_Element;
@@ -241,15 +225,13 @@ namespace ERSProjekat
             do
             {
                 if (ProveriElement.ProverElementUTxt(e_Element, putanjaTxt))
-                {
-                    Console.WriteLine($"Elektricni element {e_Element} se nalazi u fajlu");
                     pronadjenElement = true;
-                }
+
                 else
                 {
                     Console.WriteLine($"Elektricni element {e_Element} se ne nalazi u fajlu");
                     Console.WriteLine("Unesite ponovo elektricni element:");
-                    Console.ReadLine();
+                    e_Element = Console.ReadLine();
                 }
             } while (!pronadjenElement);
             Console.WriteLine("Opis kvara: ");
@@ -257,7 +239,7 @@ namespace ERSProjekat
             Console.WriteLine("Unesite status(Nepotvrdjen, U_popravci, Testiranje, Zatvoreno): ");
             st = (Status)Enum.Parse(typeof(Status),Console.ReadLine());
             Console.WriteLine("Izvrsene akcije: ");
-            Kvar kvar = new Kvar(kratakOpis, e_Element, Opis, st);
+            Kvar kvar = new Kvar(idk,vremek,kratakOpis, e_Element, Opis, st);
             while (kvarovi)
             {
                 Console.WriteLine("Unesite akciju: ");

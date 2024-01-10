@@ -1,6 +1,0 @@
-ID elementa: 123
-Naziv elementa: frizider
-Tip elementa: hahah
-Geografska lokacija: {X=142,Y=9023}
-Naponski nivo: srednji_napon
-

@@ -11,14 +11,12 @@ namespace ERSProjekat
     {
         public static bool ProveriIDuTXT(int id_elementa, string putanja)
         {
-
             try
             {
                 foreach (string red in File.ReadLines(putanja))
                 {
                     if (red.Contains(id_elementa.ToString()))
                     {
-
                         return true;
                     }
                 }
@@ -30,18 +28,5 @@ namespace ERSProjekat
                 return false;
             }
         }
-
-        public static bool DaLiJeIDBroj(int id_elementa)
-        {
-            if (int.TryParse(id_elementa, out))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-       }
-
     }
 }

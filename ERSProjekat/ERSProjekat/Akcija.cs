@@ -11,8 +11,6 @@ namespace ERSProjekat
     {
         public string VremeAkcije { get; set; }
         public string Opis { get; set; }
-        public DateTime DatumAkcije { get; set; }
-
         public Akcija(string vreme, string opis)
         {
             this.VremeAkcije = vreme;

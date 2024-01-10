@@ -19,7 +19,7 @@ namespace ERSProjekat
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(putanja);
 
-                string trazeniKvar = $"/Root/ArrayOfKvar/Kvar[ID={kvar.IDKvara}]";
+                string trazeniKvar = $"/ArrayOfKvar/Kvar[ID_Kvara='{kvar.IDKvara}']";
                 XmlNode kvarNode = xmlDoc.SelectSingleNode(trazeniKvar);
 
                 if (kvarNode != null)

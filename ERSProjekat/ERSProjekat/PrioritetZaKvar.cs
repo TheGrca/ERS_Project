@@ -10,11 +10,11 @@ namespace ERSProjekat
     {
         public static double IzracunajPrioritet(Kvar kvar)
         {
-            int brojDana = (DateTime.Now - kvar.DatumRegistrovanja).Days;
+            int brojDana = (DateTime.Now - DateTime.Parse(kvar.vremeKvara)).Days;
             double prioritet = brojDana;
             if (kvar.Akcije != null)
             {
-                foreach (var akcija in kvar.Akcije)
+                foreach (Akcija akcija in kvar.Akcije)
                 {
                     prioritet = prioritet + 0.5;
                 }

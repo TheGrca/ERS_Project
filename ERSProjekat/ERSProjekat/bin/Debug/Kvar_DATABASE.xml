@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKvar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Kvar>
+    <ID_Kvara>20240109111730_01</ID_Kvara>
+    <Vreme_Kvara>2024-01-09 23:17:30</Vreme_Kvara>
+    <Status_Kvara>Zatvoreno</Status_Kvara>
+    <Kratki_Opis_Kvara>kvar namota</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>Generator</EL_Element_Kvara>
+    <Opis_Kvara>prekid struje</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-09 23:17:34</VremeAkcije>
+      <Opis>popravka namota</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240109112407_02</ID_Kvara>
+    <Vreme_Kvara>2024-01-09 23:24:07</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>kvar lampe</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>lampa</EL_Element_Kvara>
+    <Opis_Kvara>prekid svetlosti</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-09 23:24:30</VremeAkcije>
+      <Opis>popravka lampe</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240109114835_03</ID_Kvara>
+    <Vreme_Kvara>2024-01-09 23:48:35</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>prekid svetla</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>lampa</EL_Element_Kvara>
+    <Opis_Kvara>losi polovi </Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-09 23:48:41</VremeAkcije>
+      <Opis>popravka polova</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240110120447_04</ID_Kvara>
+    <Vreme_Kvara>2024-01-10 00:04:47</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>lose svetlo</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>lampa</EL_Element_Kvara>
+    <Opis_Kvara>losa sijalica</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-10 00:04:52</VremeAkcije>
+      <Opis>popravka sijalice</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240101101234_01</ID_Kvara>
+    <Vreme_Kvara>2024-01-01 10:12:34</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>Kvar na transformatoru</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>Transformator</EL_Element_Kvara>
+    <Opis_Kvara>Kratki prekid struje</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-01 10:12:34</VremeAkcije>
+      <Opis>Zamena osigurača</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240101121545_02</ID_Kvara>
+    <Vreme_Kvara>2024-01-01 12:15:45</Vreme_Kvara>
+    <Status_Kvara>U_popravci</Status_Kvara>
+    <Kratki_Opis_Kvara>Kvar na razvodnoj tabli</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>Razvodna tabla</EL_Element_Kvara>
+    <Opis_Kvara>Kratki spoj</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-01 12:16:00</VremeAkcije>
+      <Opis>Zamena prekidača</Opis>
+    </Akcija_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-01 12:30:00</VremeAkcije>
+      <Opis>Zamena oštećenih kablova</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240102101830_03</ID_Kvara>
+    <Vreme_Kvara>2024-01-02 10:18:30</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>Kvar na generatoru</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>Generator</EL_Element_Kvara>
+    <Opis_Kvara>Gubitak snage</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-02 10:19:00</VremeAkcije>
+      <Opis>Pregled i servis generatora</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240103130412_04</ID_Kvara>
+    <Vreme_Kvara>2024-01-03 13:04:12</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>Kvar na kondenzatoru</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>Kondenzator</EL_Element_Kvara>
+    <Opis_Kvara>Kratki spoj u kondenzatoru</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-03 13:05:00</VremeAkcije>
+      <Opis>Zamena kondenzatora</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240104174523_05</ID_Kvara>
+    <Vreme_Kvara>2024-01-04 17:45:23</Vreme_Kvara>
+    <Status_Kvara>U_popravci</Status_Kvara>
+    <Kratki_Opis_Kvara>Kvar na prenosnom vodu</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>Prenosni vod</EL_Element_Kvara>
+    <Opis_Kvara>Gubitak snage na prenosnom vodu</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-04 17:46:00</VremeAkcije>
+      <Opis>Zamena oštećenog kabla</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+  <Kvar>
+    <ID_Kvara>20240110021949_01</ID_Kvara>
+    <Vreme_Kvara>2024-01-10 02:19:49</Vreme_Kvara>
+    <Status_Kvara>Nepotvrdjen</Status_Kvara>
+    <Kratki_Opis_Kvara>Kvar na prekidacu</Kratki_Opis_Kvara>
+    <EL_Element_Kvara>Prekidač</EL_Element_Kvara>
+    <Opis_Kvara>Prekidac ne radi vise</Opis_Kvara>
+    <Akcija_Kvara>
+      <VremeAkcije>2024-01-10 02:19:56</VremeAkcije>
+      <Opis>Zamenio prekidac</Opis>
+    </Akcija_Kvara>
+  </Kvar>
+</ArrayOfKvar>

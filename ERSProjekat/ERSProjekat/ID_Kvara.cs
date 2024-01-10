@@ -1,70 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml;
 
 namespace ERSProjekat
 {
     public class ID_Kvara
     {
-        private static Dictionary<DateTime, int> brojaci = new Dictionary<DateTime, int>();
-        private static readonly string brojacKvaraFilePath = "brojacKvara.txt"; // Cuvamo podatak o brojacu u fajlu
+        private static int brojac = 0;
+        private static DateTime poslednjiDatum;
+
+        private static readonly string brojacKvaraFilePath = "brojacKvara.xml";
 
         public static string GetIDKvara()
         {
-            DateTime trenutniDatum = DateTime.Now; // Trenutni datum
-            string formattedDate = trenutniDatum.ToString("yyyyMMddhhmmss"); // Formatiraj kao "yyyyMMddhhmmss"
+            DateTime trenutniDatum = DateTime.Now;
 
-            //Brojac kvara
-            int counter = GetBrojacDana(trenutniDatum);
-            formattedDate += "_" + counter.ToString("D2");
-            UpdateBrojacKvara(trenutniDatum, counter + 1);
-
-            return formattedDate;
-        }
-
-        static int GetBrojacDana(DateTime datum)
-        {
-            if (brojaci.TryGetValue(datum.Date, out int brojac))
+            if (poslednjiDatum.Date < trenutniDatum.Date)
             {
-                return brojac;
+                // Ako je danas novi dan, resetuj brojač
+                brojac = 1;
+                poslednjiDatum = trenutniDatum.Date;
+
+                // Sačuvaj brojač u XML fajl
+                SacuvajBrojacUFajl();
             }
             else
             {
-                brojaci[datum.Date] = BrojacIzFajla() ?? 1; 
-                return brojaci[datum.Date];
+                brojac++;
             }
+
+            string formattedDate = trenutniDatum.ToString("yyyyMMddhhmmss");
+            string idKvara = $"{formattedDate}_{brojac:D2}";
+
+            return idKvara;
         }
 
-        static void UpdateBrojacKvara(DateTime date, int noviBrojac)
+        static void SacuvajBrojacUFajl()
         {
-            // Da li je novi dan?
-            if (brojaci.ContainsKey(date.Date))
+            try
             {
-                brojaci[date.Date] = noviBrojac;
-            }
-            else
-            {
-                // Resetuj brojac za novi dan
-                brojaci.Clear();
-                brojaci[date.Date] = noviBrojac;
-            }
+                XmlDocument xmlDoc = new XmlDocument();
+                XmlElement root = xmlDoc.CreateElement("BrojacKvara");
+                xmlDoc.AppendChild(root);
 
-            ZapamtiBrojac(noviBrojac);
+                XmlElement brojacElement = xmlDoc.CreateElement("Brojac");
+                brojacElement.SetAttribute("Vrednost", brojac.ToString());
+                root.AppendChild(brojacElement);
+
+                XmlElement datumElement = xmlDoc.CreateElement("PoslednjiDatum");
+                datumElement.SetAttribute("Vrednost", poslednjiDatum.ToString("yyyy-MM-dd"));
+                root.AppendChild(datumElement);
+
+                xmlDoc.Save(brojacKvaraFilePath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
-        static int? BrojacIzFajla()
+        static void InicijalizujBrojacIzFajla()
         {
             try
             {
                 if (File.Exists(brojacKvaraFilePath))
                 {
-                    string counterString = File.ReadAllText(brojacKvaraFilePath);
-                    if (int.TryParse(counterString, out int counter))
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load(brojacKvaraFilePath);
+
+                    XmlNode brojacNode = xmlDoc.SelectSingleNode("/BrojacKvara/Brojac");
+                    if (brojacNode != null && int.TryParse(brojacNode.Attributes["Vrednost"].Value, out int ucitaniBrojac))
                     {
-                        return counter;
+                        brojac = ucitaniBrojac;
+                    }
+
+                    XmlNode datumNode = xmlDoc.SelectSingleNode("/BrojacKvara/PoslednjiDatum");
+                    if (datumNode != null && DateTime.TryParse(datumNode.Attributes["Vrednost"].Value, out DateTime ucitaniDatum))
+                    {
+                        poslednjiDatum = ucitaniDatum;
                     }
                 }
             }
@@ -72,20 +86,11 @@ namespace ERSProjekat
             {
                 Console.WriteLine(e.Message);
             }
-
-            return null;
         }
 
-        static void ZapamtiBrojac(int brojac)
+        static ID_Kvara() //Statički konstruktor se automatski poziva pre bilo kakvog pristupa 
         {
-            try
-            {
-                File.WriteAllText(brojacKvaraFilePath, brojac.ToString());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            InicijalizujBrojacIzFajla();
         }
     }
 }
