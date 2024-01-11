@@ -33,6 +33,8 @@ namespace ERSProjekat
         public string Opis { get; set; }
         [XmlElement("Akcija_Kvara")]
         public List<Akcija> Akcije { get; set; } = new List<Akcija>();
+        [XmlIgnore]
+        public DateTime DatumRegistrovanja { get; set; }
 
         
         public Kvar(string kratkiOpis, string e_Element, string opis)
@@ -40,8 +42,8 @@ namespace ERSProjekat
             Kratki_opis = kratkiOpis;
             Elektricni_element = e_Element;
             Opis = opis;
-            IDKvara = ID_Kvara.ID();
-            vremeKvara = GetTrenutnoVreme();
+            IDKvara = ID_Kvara.GetIDKvara();
+            vremeKvara = NadjiTrenutnoVreme.GetTrenutnoVreme();
             Status = Status.Nepotvrdjen;
             List<Akcija> akcije = new List<Akcija>();
         }
@@ -50,6 +52,18 @@ namespace ERSProjekat
         {
 
         }
+
+        public Kvar(string id,string vremek ,string kratkiOpis, string e_Element, string opis, Status s) //Konstruktor za azuriranje kvara
+        {
+            IDKvara = id;
+            vremeKvara = vremek;
+            Kratki_opis = kratkiOpis;
+            Elektricni_element = e_Element;
+            Opis = opis;
+            Status = s;
+        }
+
+
         public override string ToString()
         {
             return $"IDKvara: {IDKvara}, " +
@@ -58,31 +72,6 @@ namespace ERSProjekat
                    $"Kratki_opis: {Kratki_opis}, " +
                    $"Elektricni_element: {Elektricni_element}, " +
                    $"Opis: {Opis}, ";
-        }
-
-        public void SacuvajInformacijeUFajl(string putanja)
-        {
-            string[] linije = {
-            $"Kratki opis: {Kratki_opis}",
-            $"Električni element: {Elektricni_element}",
-            $"Opis: {Opis}",
-            $"ID kvara: {IDKvara}",
-            $"Vreme kvara: {vremeKvara}",
-            $"Status: {Status}",
-            $"Akcije: {Akcije}"
-        };
-            File.WriteAllLines(putanja, linije);
-
-            
-        } //TEST FUNKCIJA, POSLE NAPRAVITI BAZU
-          
-        public static string GetTrenutnoVreme() //Funkcija koja dobavlja trenutno vreme
-        {
-            DateTime trenutnoVreme = DateTime.Now;
-
-            string dateString = trenutnoVreme.ToString("yyyy-MM-dd HH:mm:ss");
-
-            return dateString;
         }
 
     }

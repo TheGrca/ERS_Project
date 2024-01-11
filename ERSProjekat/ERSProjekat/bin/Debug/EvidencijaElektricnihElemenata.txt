@@ -1,0 +1,90 @@
+ID elementa: 1
+Naziv elementa: Transformator
+Tip elementa: Transformator snage
+Geografska lokacija: {X=45.123,Y=19.567}
+Naponski nivo: srednji_napon
+
+ID elementa: 2
+Naziv elementa: Razvodna tabla
+Tip elementa: Glavna razvodna tabla
+Geografska lokacija: {X=42.678,Y=18.109}
+Naponski nivo: visoki_napon
+
+ID elementa: 3
+Naziv elementa: Generator
+Tip elementa: Električni generator
+Geografska lokacija: {X=37.774,Y=-122.419}
+Naponski nivo: visoki_napon
+
+ID elementa: 4
+Naziv elementa: Kondenzator
+Tip elementa: Kondenzator snage
+Geografska lokacija: {X=40.712,Y=-74.006}
+Naponski nivo: srednji_napon
+
+ID elementa: 5
+Naziv elementa: Prenosni vod
+Tip elementa: Visokonaponski prenosni vod
+Geografska lokacija: {X=51.507,Y=-0.127}
+Naponski nivo: visoki_napon
+
+ID elementa: 6
+Naziv elementa: Trafo stanica
+Tip elementa: Trafo stanica srednjeg napona
+Geografska lokacija: {X=48.856,Y=2.352}
+Naponski nivo: srednji_napon
+
+ID elementa: 7
+Naziv elementa: Električni motor
+Tip elementa: Veliki električni motor
+Geografska lokacija: {X=34.052,Y=-118.243}
+Naponski nivo: visoki_napon
+
+ID elementa: 8
+Naziv elementa: Distributivni transformator
+Tip elementa: Distributivni transformator snage
+Geografska lokacija: {X=37.774,Y=-122.419}
+Naponski nivo: nizak_napon
+
+ID elementa: 9
+Naziv elementa: Solarni panel
+Tip elementa: Fotonaponski solarni panel
+Geografska lokacija: {X=40.712,Y=-74.006}
+Naponski nivo: nizak_napon
+
+ID elementa: 10
+Naziv elementa: Prekidač
+Tip elementa: Prekidač srednjeg napona
+Geografska lokacija: {X=51.507,Y=-0.127}
+Naponski nivo: srednji_napon
+
+ID elementa: 11
+Naziv elementa: Baterija
+Tip elementa: Velika akumulatorska baterija
+Geografska lokacija: {X=48.856,Y=2.352}
+Naponski nivo: nizak_napon
+
+ID elementa: 12
+Naziv elementa: Vjetroturbina
+Tip elementa: Vjetroturbina za proizvodnju električne energije
+Geografska lokacija: {X=34.052,Y=-118.243}
+Naponski nivo: visoki_napon
+
+ID elementa: 13
+Naziv elementa: Električni panel
+Tip elementa: Kontrolni električni panel
+Geografska lokacija: {X=45.123,Y=19.567}
+Naponski nivo: srednji_napon
+
+ID elementa: 14
+Naziv elementa: Frekventni pretvarač
+Tip elementa: Električni frekventni pretvarač
+Geografska lokacija: {X=42.678,Y=18.109}
+Naponski nivo: visoki_napon
+
+ID elementa: 15
+Naziv elementa: Hidroelektrana
+Tip elementa: Hidroelektrana snage
+Geografska lokacija: {X=37.774,Y=-122.419}
+Naponski nivo: visoki_napon
+

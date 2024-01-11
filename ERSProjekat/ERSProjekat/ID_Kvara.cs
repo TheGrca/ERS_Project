@@ -1,46 +1,96 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Xml;
 
 namespace ERSProjekat
 {
     public class ID_Kvara
     {
+        private static int brojac = 0;
+        private static DateTime poslednjiDatum;
 
-        public static string ID()
+        private static readonly string brojacKvaraFilePath = "brojacKvara.xml";
+
+        public static string GetIDKvara()
         {
-            DateTime currentDate = DateTime.Now; // Trenutni datum
-            string formattedDate = currentDate.ToString("yyyyMMddhhmmss"); // Formatiraj kao "yyyyMMddhhmmss"
+            DateTime trenutniDatum = DateTime.Now;
 
-            //Brojac kvara
-            int counter = GetCounterForDate(currentDate);
-            formattedDate += "_" + counter.ToString("D2"); 
-            UpdateCounterForDate(currentDate, counter + 1);
-
-            return formattedDate;
-        }
-
-        static int GetCounterForDate(DateTime date)
-        {
-            Dictionary<DateTime, int> counters = new Dictionary<DateTime, int>();
-
-            if (counters.TryGetValue(date.Date, out int counter))
+            if (poslednjiDatum.Date < trenutniDatum.Date)
             {
-                return counter;
+                // Ako je danas novi dan, resetuj brojač
+                brojac = 1;
+                poslednjiDatum = trenutniDatum.Date;
+
+                // Sačuvaj brojač u XML fajl
+                SacuvajBrojacUFajl();
             }
             else
             {
-                counters[date.Date] = 1; 
-                return 1;
+                brojac++;
+            }
+
+            string formattedDate = trenutniDatum.ToString("yyyyMMddhhmmss");
+            string idKvara = $"{formattedDate}_{brojac:D2}";
+
+            return idKvara;
+        }
+
+        static void SacuvajBrojacUFajl()
+        {
+            try
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                XmlElement root = xmlDoc.CreateElement("BrojacKvara");
+                xmlDoc.AppendChild(root);
+
+                XmlElement brojacElement = xmlDoc.CreateElement("Brojac");
+                brojacElement.SetAttribute("Vrednost", brojac.ToString());
+                root.AppendChild(brojacElement);
+
+                XmlElement datumElement = xmlDoc.CreateElement("PoslednjiDatum");
+                datumElement.SetAttribute("Vrednost", poslednjiDatum.ToString("yyyy-MM-dd"));
+                root.AppendChild(datumElement);
+
+                xmlDoc.Save(brojacKvaraFilePath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
-        static void UpdateCounterForDate(DateTime date, int newCounter)
+        static void InicijalizujBrojacIzFajla()
         {
-            Dictionary<DateTime, int> counters = new Dictionary<DateTime, int>();
-            counters[date.Date] = newCounter;
+            try
+            {
+                if (File.Exists(brojacKvaraFilePath))
+                {
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load(brojacKvaraFilePath);
+
+                    XmlNode brojacNode = xmlDoc.SelectSingleNode("/BrojacKvara/Brojac");
+                    if (brojacNode != null && int.TryParse(brojacNode.Attributes["Vrednost"].Value, out int ucitaniBrojac))
+                    {
+                        brojac = ucitaniBrojac;
+                    }
+
+                    XmlNode datumNode = xmlDoc.SelectSingleNode("/BrojacKvara/PoslednjiDatum");
+                    if (datumNode != null && DateTime.TryParse(datumNode.Attributes["Vrednost"].Value, out DateTime ucitaniDatum))
+                    {
+                        poslednjiDatum = ucitaniDatum;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        static ID_Kvara() //Statički konstruktor se automatski poziva pre bilo kakvog pristupa 
+        {
+            InicijalizujBrojacIzFajla();
         }
     }
 }
